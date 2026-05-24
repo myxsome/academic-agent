@@ -1,10 +1,14 @@
 import fitz  # PyMuPDF
 from openai import OpenAI
 import os
+from dotenv import load_dotenv
 
-# 替换为你申请的 API Key 和对应的 Base URL
-API_KEY = "sk-7250c1b125e74bebb87357f4a1d562dc"
-BASE_URL = "https://api.deepseek.com" # 以 DeepSeek 为例
+# 加载 .env 文件中的环境变量
+load_dotenv()
+
+# 从环境变量中安全读取 API Key，如果没有找到会返回 None
+API_KEY = os.getenv("MY_API_KEY")
+BASE_URL = "https://api.deepseek.com"
 
 client = OpenAI(api_key=API_KEY, base_url=BASE_URL)
 
